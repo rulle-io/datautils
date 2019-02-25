@@ -1,0 +1,45 @@
+#Eclipse
+.classpath
+.project
+.settings/
+
+# Intellij
+.idea/
+*.iml
+*.iws
+*.ipr
+atlassian-ide-plugin.xml
+
+# Mac
+.DS_Store
+
+# Maven
+log/
+target/
+pom.xml.versionsBackup
+
+# Build
+build
+output
+org.junit.rules.TemporaryFolder*
+
+# Python
+*.pyc
+.pytest_cache/
+.coverage
+
+# Temp. scio BigQuery objects
+.bigquery/
+
+# Temp. BQ runner
+bigquery/.cache
+
+# needed not to have unstaged files during jenkins build
+workspace.tgz
+luigi/.tox
+
+# quickstyx
+_qstyx/
+
+# venv
+venv/
