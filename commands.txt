@@ -1,2 +1,13 @@
 # Run unit-tests
 python -m unittest tests/
+
+# Login required now
+docker login
+
+# Build a new Docker image
+docker build -t datehole .
+
+# List of images (size)
+>docker images
+REPOSITORY                 TAG                 IMAGE ID       CREATED        SIZE
+python                     3.8.7-slim-buster   d77ba8950091   22 hours ago   114MB

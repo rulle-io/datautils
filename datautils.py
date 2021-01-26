@@ -1,7 +1,8 @@
 from datetime import datetime, timedelta
 
 
-def date_hole_printer(dates_list, period_start=None, period_end=None, dt_format='%Y-%m-%d', units='days', is_sorted=True):
+def date_hole_printer(dates_list, period_start=None, period_end=None, dt_format='%Y-%m-%d', units='days',
+                      is_sorted=True):
     """
     Finds 'holes' in interval [period_start .. period_end) given a list of existing dates as strings.
     Return a list of dates as strings in the same format, which are the "holes" in the interval.
@@ -12,7 +13,7 @@ def date_hole_printer(dates_list, period_start=None, period_end=None, dt_format=
     :param dt_format: a pattern used in datetime.strptime()
     :param units: timedelta units. One of following [days, hours]
     :param is_sorted: Whether dates_list is sorted.
-    :returns sorted list of 'holes' as string(s)
+    :returns sorted list of 'holes' (strings)
     """
     # input parameters validation
     if dates_list is None:
