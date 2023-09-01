@@ -1,0 +1,59 @@
+{# templates/links_template.html #}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Links to useful services</title>
+    <style>
+        /* Define some styles for the table */
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th, td {
+            text-align: left;
+            padding: 8px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+<h1>Links to useful services</h1>
+<table>
+    <thead>
+    <tr>
+        <th>Type</th>
+        <th>Company</th>
+        <th>Why</th>
+        <th>Link</th>
+        <th>Message</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for link in links %}
+    <tr>
+        <td>{{ link.type }}</td>
+        <td><a href="{{ link.service_url }}">{{ link.service_name }}</a></td>
+        <td>{{ link.motiv }}</td>
+        <td><a href="{{ link.url }}">Link to offer</a></td>
+        <td>{{ link.explanation }}</td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+<script>
+        // Here's an example of how you could use JavaScript to modify the table.
+        // This code adds a class to the first row of the table.
+
+        const firstRow = document.querySelector('table tbody tr:first-child');
+        firstRow.classList.add('highlighted');
+    </script>
+</body>
+</html>
