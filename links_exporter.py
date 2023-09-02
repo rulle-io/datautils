@@ -1,15 +1,26 @@
 import csv
 from jinja2 import Environment, FileSystemLoader
 
-def create_links_html():
+def create_links_files():
     environment = Environment(loader=FileSystemLoader("templates/"))
-    template = environment.get_template("links_template.html")
     context = {
         "links": read_links()
     }
+    md_template_file = "links_template.md"
+    md_output_filename = "links.md"
+    create_links_generic(environment, context, md_template_file, md_output_filename)
 
-    filename = "links.html"
+    html_template_file = "links_template.html"
+    html_output_filename = "links.html"
+    create_links_generic(environment, context, html_template_file, html_output_filename)
+
+def create_links_generic(environment, context, template_file, output_filename):
+    template = environment.get_template(template_file)
     content = template.render(context)
+    create_output_file(content, output_filename)
+
+
+def create_output_file(content, filename):
     with open(filename, mode="w", encoding="utf-8") as message:
         message.write(content)
         print(f"... wrote {filename}")
@@ -18,7 +29,7 @@ def create_links_html():
 def read_links():
     with open('./links.csv', 'r') as csvfile:
         reader = csv.reader(csvfile)
-        headers = next(reader) # Skip/Ignore first line
+        next(reader) # Skip/Ignore first (headers) line
         ## Type,Name,Why,Link,Info
         links = []
         for row in reader:
@@ -30,4 +41,4 @@ def read_links():
         return links 
 
 if __name__ == '__main__':
-    create_links_html()
+    create_links_files()

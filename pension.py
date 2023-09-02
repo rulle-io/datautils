@@ -16,6 +16,9 @@ def pension_contribution_verification(salary_annual, contribution_employee_month
     iba_807_annual = iba * 8.07
     contribution_employee_monthly_min = 500
     salary_monthly = salary_annual / 12
+    contrib_coeff_1 = 0.058  # the difference between the tax rates
+    contrib_coeff_2 = 0.30  # lower contribution to occupational pension
+    contrib_coeff_total = 1 + contrib_coeff_1 + contrib_coeff_2
 
     # The company pays a premium of 4.5% of the actual gross salary paid out every month,
     # up to an annual income of 7.5 IBA (2022: monthly salary SEK 44 375)
@@ -25,7 +28,7 @@ def pension_contribution_verification(salary_annual, contribution_employee_month
         min(salary_monthly, iba_75_monthly) * 0.045 + max(0, salary_monthly - iba_75_monthly) * 0.3
 
     # Salary Exchange (Monthly Premium)
-    contribution_additional_monthly = contribution_employee_monthly * 1.058
+    contribution_additional_monthly = contribution_employee_monthly * contrib_coeff_total
 
     # Total Pension (contribution) After Salary Exchange
     contribution_total_monthly = contribution_automatic_monthly + contribution_additional_monthly
